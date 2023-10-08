@@ -3,7 +3,7 @@ import { NextAuthOptions } from "next-auth";
 import EmailProvider from "next-auth/providers/email";
 import GoogleProvider from "next-auth/providers/google";
 import { PrismaAdapter } from "@next-auth/prisma-adapter";
-import prisma from "@lib/prisma";
+import { prisma } from "@lib/prisma";
 import { sendEmail } from "emails";
 import LoginLink from "emails/login-link";
 import { isBlacklistedEmail } from "@lib/edge-config";
@@ -12,7 +12,7 @@ import WelcomeEmail from "emails/welcome-email";
 const VERCEL_DEPLOYMENT = !!process.env.VERCEL_URL;
 
 export const authOptions: NextAuthOptions = {
-  debug: true,
+  // debug: true,
   providers: [
     EmailProvider({
       sendVerificationRequest({ identifier, url }) {

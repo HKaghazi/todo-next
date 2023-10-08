@@ -1,6 +1,5 @@
+import { Navbar } from "@cmp/workspace/navbar";
 import type { Metadata } from "next";
-import { Providers } from "./providers";
-import "../styles/globals.scss";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -13,10 +12,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      <body>
-        <Providers>{children}</Providers>
-      </body>
-    </html>
+    <div className="container mx-auto">
+      <Navbar />
+      <main>{children}</main>
+    </div>
   );
 }
