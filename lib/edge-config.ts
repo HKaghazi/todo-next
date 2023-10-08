@@ -51,7 +51,7 @@ export const isBlacklistedEmail = async (email: string) => {
   } catch (e) {
     blacklistedEmails = [];
   }
-  return new RegExp(blacklistedEmails.join("|"), "i").test(email);
+  return blacklistedEmails.includes(email);
 };
 
 // export const isReservedKey = async (key: string) => {

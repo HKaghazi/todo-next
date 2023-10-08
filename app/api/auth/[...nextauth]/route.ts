@@ -12,11 +12,12 @@ import WelcomeEmail from "emails/welcome-email";
 const VERCEL_DEPLOYMENT = !!process.env.VERCEL_URL;
 
 export const authOptions: NextAuthOptions = {
+  debug: true,
   providers: [
     EmailProvider({
       sendVerificationRequest({ identifier, url }) {
         if (process.env.NODE_ENV === "development") {
-          console.log(`Login link: ${url}`);
+          console.info(`Login link: ${url}`);
           return;
         } else {
           sendEmail({
@@ -43,17 +44,17 @@ export const authOptions: NextAuthOptions = {
         sameSite: "lax",
         path: "/",
         // When working on localhost, the cookie domain must be omitted entirely (https://stackoverflow.com/a/1188145)
-        domain: VERCEL_DEPLOYMENT ? ".dub.co" : undefined,
+        domain: VERCEL_DEPLOYMENT ? ".koksa.ir" : undefined,
         secure: VERCEL_DEPLOYMENT,
       },
     },
   },
-  pages: {
-    error: "/login",
-  },
+  // pages: {
+  //   error: "/login",
+  // },
   callbacks: {
     signIn: async ({ user, account, profile }) => {
-      console.log({ user, account, profile });
+      // console.log({ user, account, profile });
       if (!user.email || (await isBlacklistedEmail(user.email))) {
         return false;
       }
