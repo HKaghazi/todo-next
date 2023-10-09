@@ -99,7 +99,6 @@ export const authOptions: NextAuthOptions = {
           return {};
         }
       }
-
       return token;
     },
     session: async ({ session, token }) => {

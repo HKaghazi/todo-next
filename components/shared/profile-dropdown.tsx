@@ -11,7 +11,7 @@ export const ProfileDropDown = () => {
   return (
     <Menu as="div" className="relative inline-block text-left">
       <Menu.Button className="min-w-[100px] bg-gray-800 rounded-full inline-flex gap-2 items-center px-4 cursor-pointer hover:bg-gray-700 duration-300">
-        <Avatar src={user?.image} alt={user?.name} size="md" className="-ml-4" />
+        <Avatar src={user?.image} alt={user?.name} size="sm" className="-ml-4" />
         <span className="text-gray-100">{user?.name}</span>
       </Menu.Button>
       <Transition

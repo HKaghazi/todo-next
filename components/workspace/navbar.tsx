@@ -8,7 +8,7 @@ export const Navbar = () => {
       <ProfileDropDown />
 
       <Link href={"/"}>
-        <Logo />
+        <Logo size="sm"/>
       </Link>
     </div>
   );

@@ -1,3 +1,4 @@
+import { NextResponse } from "next/server";
 import { toast } from "sonner";
 import { ZodError } from "zod";
 
@@ -51,5 +52,17 @@ function handleError(err: unknown) {
 
   console.error("Unhandled error (frontend) ==>", JSON.stringify(err));
 }
+
+export const inputError = () =>
+  NextResponse.json(
+    { error: "Invalid inputs", success: false },
+    { status: 422 },
+  );
+
+export const unauthemticatedError = () =>
+  NextResponse.json(
+    { error: "Unauthenticated user", success: false },
+    { status: 403 },
+  );
 
 export { auth_errors, handleError };

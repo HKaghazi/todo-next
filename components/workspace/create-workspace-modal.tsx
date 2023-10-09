@@ -22,23 +22,21 @@ const ModalContent: React.FC<ModalContentProps> = ({ closeModal }) => {
 
   const onSubmit = async (data: any) => {
     try {
-      // setSaving(true);
+      setSaving(true);
       const res = await fetch(`${API_URL}/workspace`, {
         method: "post",
         cache: "no-cache",
         headers: {
-          "content-type": "application/json",
+          "Content-Type": "application/json",
         },
+        body: JSON.stringify(data),
       });
+      setSaving(false);
 
-      console.log("res", res);
-      // const resJson = await res.json();
-      // if (!res.ok) return toast.error(resJson?.message);
+      const resJson = await res.json();
+      if (!res.ok) return toast.error(resJson?.error);
 
-      // closeModal();
-
-      // .catch(handleError)
-      // .finally(() => setSaving(false));
+      closeModal();
     } catch (err) {
       handleError(err);
     }
@@ -74,6 +72,7 @@ const ModalContent: React.FC<ModalContentProps> = ({ closeModal }) => {
           text="Save"
           variant="primary"
           className="flex-grow-0 w-min py-1 rounded-lg min-w-[120px]"
+          loading={saving}
         />
       </div>
     </form>
