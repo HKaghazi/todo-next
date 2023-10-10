@@ -15,7 +15,7 @@ type Props = {
 export const WorkspaceCard: React.FC<Props> = ({ workspace }) => {
   return (
     <div className="border rounded-lg flex justify-between items-center hover:shadow-md duration-300">
-      <Link href={`/worksapce/${workspace.id}`} className="px-4 py-2 flex-1">
+      <Link href={`/workspace/${workspace.id}`} className="px-4 py-2 flex-1">
         <p className="font-semibold">{workspace.name}</p>
 
         <div className="inline-flex gap-1 items-center">
