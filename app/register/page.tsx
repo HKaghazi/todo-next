@@ -1,10 +1,15 @@
+// import { HOME_DOMAIN, constructMetadata } from "@dub/utils";
 import Button from "@cmp/shared/button";
 import { Logo } from "@cmp/shared/logo";
-import { APP_NAME, APP_URL } from "@lib/constants";
+import { APP_URL } from "@lib/constants";
 import { Suspense } from "react";
-import LoginForm from "./form";
+import RegisterForm from "./form";
 
-export default function LoginPage() {
+// export const metadata = constructMetadata({
+//   title: "Sign up to Dub",
+// });
+
+export default function RegisterPage() {
   return (
     <div className="relative z-10 mt-[calc(30vh)] h-fit w-full max-w-md overflow-hidden border border-gray-100 sm:rounded-2xl sm:shadow-xl mx-auto">
       {/* <a
@@ -18,9 +23,9 @@ export default function LoginPage() {
         <a href={APP_URL}>
           <Logo className="h-10 w-10" />
         </a>
-        <h3 className="text-xl font-semibold">Sign in to {APP_NAME}</h3>
+        <h3 className="text-xl font-semibold">Create your Dub account</h3>
         <p className="text-sm text-gray-500">
-          Start managing your tasks easily.
+          Get started for free. No credit card required.
         </p>
       </div>
       <div className="flex flex-col space-y-3 bg-gray-50 px-4 py-8 sm:px-16">
@@ -29,12 +34,11 @@ export default function LoginPage() {
             <>
               <Button disabled={true} text="" variant="secondary" />
               <Button disabled={true} text="" variant="secondary" />
-              <Button disabled={true} text="" variant="secondary" />
               <div className="mx-auto h-5 w-3/4 rounded-lg bg-gray-100" />
             </>
           }
         >
-          <LoginForm />
+          <RegisterForm />
         </Suspense>
       </div>
     </div>
