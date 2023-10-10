@@ -1,17 +1,34 @@
-"use client";
-import { useCreateWorkspaceModal } from "@cmp/workspace/create-workspace-modal";
+import { WorkspaceWrapper } from "@cmp/workspace/workspace-wrapper";
+import { WorkspacesHeader } from "@cmp/workspace/worspaces-header";
+import { API_URL } from "@lib/constants";
+import { Workspace } from "@prisma/client";
+import { cookies } from "next/headers";
 
-export default function Workspace() {
-  const { ModalCMP, openModal } = useCreateWorkspaceModal();
+async function getWorkspaces(): Promise<Workspace[]> {
+  try {
+    const res = await fetch(`${API_URL}/workspace`, {
+      cache: "no-cache",
+      credentials: "include",
+      headers: {
+        "Content-Type": "application/json",
+        Cookie: cookies().toString(),
+      },
+    });
+
+    if (!res.ok) return [];
+    return await res.json();
+  } catch {
+    return [];
+  }
+}
+
+export default async function Workspace() {
+  const workspaces = await getWorkspaces();
+
   return (
-    <div className="">
-      <h1>My workspaces</h1>
-
-      <button type="button" onClick={() => openModal(true)}>
-        create workspace
-      </button>
-
-      <ModalCMP />
-    </div>
+    <>
+      <WorkspacesHeader />
+      <WorkspaceWrapper workspaces={workspaces} />
+    </>
   );
 }

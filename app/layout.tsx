@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Providers } from "./providers";
+import { yekan } from "styles/fonts";
 import "../styles/globals.scss";
 
 export const metadata: Metadata = {
@@ -14,7 +15,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body>
+      <body className={yekan.className}>
         <Providers>{children}</Providers>
       </body>
     </html>

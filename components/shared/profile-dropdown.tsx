@@ -10,9 +10,9 @@ export const ProfileDropDown = () => {
 
   return (
     <Menu as="div" className="relative inline-block text-left">
-      <Menu.Button className="min-w-[100px] bg-gray-800 rounded-full inline-flex gap-2 items-center px-4 cursor-pointer hover:bg-gray-700 duration-300">
+      <Menu.Button className="min-w-[100px] bg-gray-100 rounded-full inline-flex gap-2 items-center px-4 cursor-pointer hover:bg-gray-200 duration-300">
         <Avatar src={user?.image} alt={user?.name} size="sm" className="-ml-4" />
-        <span className="text-gray-100">{user?.name}</span>
+        <span className="text-gray-800">{user?.name}</span>
       </Menu.Button>
       <Transition
         as={Fragment}
@@ -23,7 +23,7 @@ export const ProfileDropDown = () => {
         leaveFrom="transform opacity-100 scale-100"
         leaveTo="transform opacity-0 scale-95"
       >
-        <Menu.Items className="absolute left-0 mt-2 w-56 origin-top-left divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+        <Menu.Items className="absolute right-0 mt-2 w-56 origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
           <Menu.Item>
             {({ active }) => (
               <a

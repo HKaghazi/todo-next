@@ -7,7 +7,7 @@ import React from "react";
 type Props = Omit<ImageProps, "src" | "alt"> & {
   alt?: string | null;
   src?: string | null;
-  size?: "sm" | "md" | "lg";
+  size?: "sm" | "md" | "lg" | number;
 };
 
 const sizes = {
@@ -19,8 +19,7 @@ const sizes = {
 export const Avatar: React.FC<Props> = (props) => {
   const { size = "md", className, src, alt, style, ...rest } = props;
 
-  // const sizeCls = styles[size];
-  const nSize = sizes[size];
+  const nSize = typeof size == "string" ? sizes[size] : size;
 
   return (
     <Image
@@ -29,7 +28,7 @@ export const Avatar: React.FC<Props> = (props) => {
       alt={alt ?? "avatar"}
       width={nSize}
       height={nSize}
-      className={cn("rounded-full", className)}
+      className={cn("rounded-full border", className)}
       style={{ ...style, width: nSize, height: nSize }}
       {...rest}
     />

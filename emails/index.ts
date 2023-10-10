@@ -21,7 +21,7 @@ export const sendEmail = async ({
   test?: boolean;
 }) => {
   if (!resend) {
-    console.log("Resend is not configured correctly.");
+    // console.log("Resend is not configured correctly.");
     return Promise.resolve();
   }
   return resend.emails.send({
