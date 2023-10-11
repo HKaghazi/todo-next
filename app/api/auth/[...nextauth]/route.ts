@@ -11,7 +11,7 @@ import WelcomeEmail from "emails/welcome-email";
 
 const VERCEL_DEPLOYMENT = !!process.env.VERCEL_URL;
 
-export const authOptions: NextAuthOptions = {
+const authOptions: NextAuthOptions = {
   // debug: true,
   providers: [
     EmailProvider({
