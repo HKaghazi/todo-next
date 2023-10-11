@@ -4,7 +4,7 @@ export const APP_NAME = "ToDo next";
 export const APP_URL =
   process.env.NODE_ENV == "development"
     ? "http://localhost:3000"
-    : "https://wwww.koksa.ir";
+    : "https://www.koksa.ir";
 export const API_URL = APP_URL + `/api`;
 
 // ably
